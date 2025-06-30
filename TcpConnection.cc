@@ -347,7 +347,7 @@ void TcpConnection::shutdownInLoop()
     }
 }
 
-void TcpConnection::coonectEstablished()
+void TcpConnection::conectEstablished()
 {
     setState(kConnected);
     connectchannel_->tie(

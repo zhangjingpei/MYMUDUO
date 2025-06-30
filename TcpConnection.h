@@ -50,7 +50,7 @@ public:
     }
     void setCloseCallback(CloseCallback& cb) { closeCallback_ = cb; }
 
-    void coonectEstablished();
+    void conectEstablished();
     void connectDestroyed();
 
 private:
