@@ -1,0 +1,3 @@
+/home/zhang/clearning/MYMUDUO/build/CMakeFiles/mymuduo.dir
+/home/zhang/clearning/MYMUDUO/build/CMakeFiles/edit_cache.dir
+/home/zhang/clearning/MYMUDUO/build/CMakeFiles/rebuild_cache.dir
