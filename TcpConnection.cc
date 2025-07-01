@@ -64,6 +64,8 @@ void TcpConnection::handleRead(Timestamp receiveTime)
 {
     int savedErrno = 0;
     ssize_t n = inputBuffer_.readFd(connectchannel_->fd(), &savedErrno);
+    LOG_INFO("TcpConnection::handleRead inputBuffer_:%s",
+             inputBuffer_.retrieveAllAsString().c_str());
     if (n > 0)
     {
         // 调用用户设置的消息回调
@@ -172,7 +174,8 @@ void TcpConnection::handleWrite()
 void TcpConnection::handleClose()
 {
     loop_->assertInLoopThread();
-    LOG_INFO("fd = %d, state = %s", connectchannel_->fd(), stateToString());
+    LOG_INFO(
+        "TcpConnection::handleClose() fd = %d, state = %s", connectchannel_->fd(), stateToString());
 
     assert(state_.load() == kConnected || state_.load() == kDisConnecting);
     setState(kDisconnected);
@@ -361,10 +364,12 @@ void TcpConnection::conectEstablished()
 
 void TcpConnection::connectDestroyed()
 {
+    LOG_INFO("TcpConnection::connectDestroyed():: state_:%d", state_.load());
     if (state_.load() == kConnected || state_.load() == kDisConnecting)
     {
         setState(kDisconnected);
         connectchannel_->disableAll();
+        LOG_INFO("TcpConnection::connectDestroyed():: will go connectionCallback_");
         connectionCallback_(shared_from_this());
     }
 
