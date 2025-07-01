@@ -38,17 +38,17 @@ public:
     void sendFile(int fileDescriptor, off_t offset, size_t count);
     void shutdown();   // 关闭当前连接
 
-    void setConnectionCallback(ConnectionCallback& cb) { connectionCallback_ = cb; }
-    void setMessageCallback(MessageCallback& cb) { messageCallback_ = cb; }
-    void setWriteCompleteCallback(WriteCompleteCallback& cb)
+    void setConnectionCallback(const ConnectionCallback& cb) { connectionCallback_ = cb; }
+    void setMessageCallback(const MessageCallback& cb) { messageCallback_ = cb; }
+    void setWriteCompleteCallback(const WriteCompleteCallback& cb)
     {
         writeCompleteCallback_ = cb;
     }
-    void setHighWaterMarkCallback(HighWaterMarkCallback& cb)
+    void setHighWaterMarkCallback(const HighWaterMarkCallback& cb)
     {
         highWaterMarkCallback_ = cb;
     }
-    void setCloseCallback(CloseCallback& cb) { closeCallback_ = cb; }
+    void setCloseCallback(const CloseCallback& cb) { closeCallback_ = cb; }
 
     void conectEstablished();
     void connectDestroyed();

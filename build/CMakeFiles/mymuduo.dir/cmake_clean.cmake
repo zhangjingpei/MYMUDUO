@@ -27,12 +27,14 @@ file(REMOVE_RECURSE
   "CMakeFiles/mymuduo.dir/Socket.cc.o.d"
   "CMakeFiles/mymuduo.dir/TcpConnection.cc.o"
   "CMakeFiles/mymuduo.dir/TcpConnection.cc.o.d"
+  "CMakeFiles/mymuduo.dir/TcpServer.cc.o"
+  "CMakeFiles/mymuduo.dir/TcpServer.cc.o.d"
   "CMakeFiles/mymuduo.dir/Thread.cc.o"
   "CMakeFiles/mymuduo.dir/Thread.cc.o.d"
   "CMakeFiles/mymuduo.dir/Timestamp.cc.o"
   "CMakeFiles/mymuduo.dir/Timestamp.cc.o.d"
-  "CMakeFiles/mymuduo.dir/logger.cc.o"
-  "CMakeFiles/mymuduo.dir/logger.cc.o.d"
+  "CMakeFiles/mymuduo.dir/logging.cc.o"
+  "CMakeFiles/mymuduo.dir/logging.cc.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

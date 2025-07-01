@@ -21,7 +21,7 @@ TcpServer::TcpServer(EventLoop* loop, const InetAddress& listenAddr, const std::
 , threadPool_(new EventLoopThreadPool(loop_, name_))
 , connectionCallback_()
 , messageCallback_()
-, WriteCompleteCallback_()
+, writeCompleteCallback_()
 , nextConnId_(1)
 , started_(0)
 {
@@ -70,7 +70,7 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     conn->setConnectionCallback(connectionCallback_);
     conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setMessageCallback(messageCallback_);
-    conn->setCloseCallback(std::bind(removeConnection, this, std::placeholders::_1));
+    conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, std::placeholders::_1));
 
     // 将conn的状态设置为已建立连接，并设置可读，并调用connectionCallback_
     ioLoop->runInLoop(std::bind(&TcpConnection::conectEstablished, conn));
@@ -96,8 +96,11 @@ TcpServer::~TcpServer()
 {
     for (auto& item : connections_)
     {
+        // 创建 conn 临时共享指针，增加引用计数  防止后续操作中对象被reset()意外销毁
         TcpConnectionPtr conn(item.second);
+        // 释放 connections_ 中的共享指针，减少引用计数
         item.second.reset();
+        // 调度到IO线程销毁
         conn->getLoop()->runInLoop(std::bind(&TcpConnection::connectDestroyed, conn));
     }
 }

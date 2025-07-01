@@ -21,9 +21,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/zhang/clearning/MYMUDUO/Poller.cc" "CMakeFiles/mymuduo.dir/Poller.cc.o" "gcc" "CMakeFiles/mymuduo.dir/Poller.cc.o.d"
   "/home/zhang/clearning/MYMUDUO/Socket.cc" "CMakeFiles/mymuduo.dir/Socket.cc.o" "gcc" "CMakeFiles/mymuduo.dir/Socket.cc.o.d"
   "/home/zhang/clearning/MYMUDUO/TcpConnection.cc" "CMakeFiles/mymuduo.dir/TcpConnection.cc.o" "gcc" "CMakeFiles/mymuduo.dir/TcpConnection.cc.o.d"
+  "/home/zhang/clearning/MYMUDUO/TcpServer.cc" "CMakeFiles/mymuduo.dir/TcpServer.cc.o" "gcc" "CMakeFiles/mymuduo.dir/TcpServer.cc.o.d"
   "/home/zhang/clearning/MYMUDUO/Thread.cc" "CMakeFiles/mymuduo.dir/Thread.cc.o" "gcc" "CMakeFiles/mymuduo.dir/Thread.cc.o.d"
   "/home/zhang/clearning/MYMUDUO/Timestamp.cc" "CMakeFiles/mymuduo.dir/Timestamp.cc.o" "gcc" "CMakeFiles/mymuduo.dir/Timestamp.cc.o.d"
-  "/home/zhang/clearning/MYMUDUO/logger.cc" "CMakeFiles/mymuduo.dir/logger.cc.o" "gcc" "CMakeFiles/mymuduo.dir/logger.cc.o.d"
+  "/home/zhang/clearning/MYMUDUO/logging.cc" "CMakeFiles/mymuduo.dir/logging.cc.o" "gcc" "CMakeFiles/mymuduo.dir/logging.cc.o.d"
   )
 
 # Targets to which this target links.

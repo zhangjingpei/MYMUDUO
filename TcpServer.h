@@ -37,16 +37,16 @@ public:
 
     void setThreadInitCallback(const ThreadInitCallback& cb)
     {
-        threadInitCallback_ = std::move(cb);
+        threadInitCallback_ = cb;
     }
     void setConnectionCallback(const ConnectionCallback& cb)
     {
-        connectionCallback_ = std::move(cb);
+        connectionCallback_ = cb;
     }
-    void setMessageCallback(const MessageCallback& cb) { messageCallback_ = std::move(cb); }
+    void setMessageCallback(const MessageCallback& cb) { messageCallback_ = cb; }
     void setWriteCompleteCallback(const WriteCompleteCallback& cb)
     {
-        WriteCompleteCallback_ = std::move(cb);
+        writeCompleteCallback_ = cb;
     }
 
     // 设置底层subLoop的数量

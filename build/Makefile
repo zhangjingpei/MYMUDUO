@@ -441,6 +441,30 @@ TcpConnection.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.s
 .PHONY : TcpConnection.cc.s
 
+TcpServer.o: TcpServer.cc.o
+.PHONY : TcpServer.o
+
+# target to build an object file
+TcpServer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.o
+.PHONY : TcpServer.cc.o
+
+TcpServer.i: TcpServer.cc.i
+.PHONY : TcpServer.i
+
+# target to preprocess a source file
+TcpServer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.i
+.PHONY : TcpServer.cc.i
+
+TcpServer.s: TcpServer.cc.s
+.PHONY : TcpServer.s
+
+# target to generate assembly for a file
+TcpServer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpServer.cc.s
+.PHONY : TcpServer.cc.s
+
 Thread.o: Thread.cc.o
 .PHONY : Thread.o
 
@@ -489,29 +513,29 @@ Timestamp.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-logger.o: logger.cc.o
-.PHONY : logger.o
+logging.o: logging.cc.o
+.PHONY : logging.o
 
 # target to build an object file
-logger.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logger.cc.o
-.PHONY : logger.cc.o
+logging.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logging.cc.o
+.PHONY : logging.cc.o
 
-logger.i: logger.cc.i
-.PHONY : logger.i
+logging.i: logging.cc.i
+.PHONY : logging.i
 
 # target to preprocess a source file
-logger.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logger.cc.i
-.PHONY : logger.cc.i
+logging.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logging.cc.i
+.PHONY : logging.cc.i
 
-logger.s: logger.cc.s
-.PHONY : logger.s
+logging.s: logging.cc.s
+.PHONY : logging.s
 
 # target to generate assembly for a file
-logger.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logger.cc.s
-.PHONY : logger.cc.s
+logging.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/logging.cc.s
+.PHONY : logging.cc.s
 
 # Help Target
 help:
@@ -561,15 +585,18 @@ help:
 	@echo "... TcpConnection.o"
 	@echo "... TcpConnection.i"
 	@echo "... TcpConnection.s"
+	@echo "... TcpServer.o"
+	@echo "... TcpServer.i"
+	@echo "... TcpServer.s"
 	@echo "... Thread.o"
 	@echo "... Thread.i"
 	@echo "... Thread.s"
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... logger.o"
-	@echo "... logger.i"
-	@echo "... logger.s"
+	@echo "... logging.o"
+	@echo "... logging.i"
+	@echo "... logging.s"
 .PHONY : help
 
 
