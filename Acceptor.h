@@ -19,7 +19,7 @@ public:
     // 设置新连接的回调函数
     void setNewConnectionCallback(const NewConnectionCallback& cb)
     {
-        NewConnectionCallback_ = std::move(cb);
+        NewConnectionCallback_ = cb;
     }
     // 判断是否在监听
     bool listening() { return listenning_; }
