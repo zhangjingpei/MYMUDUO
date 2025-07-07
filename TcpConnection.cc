@@ -65,9 +65,10 @@ void TcpConnection::handleRead(Timestamp receiveTime)
     int savedErrno = 0;
     ssize_t n = inputBuffer_.readFd(connectchannel_->fd(), &savedErrno);
     LOG_INFO("TcpConnection::handleRead inputBuffer_:%s",
-             inputBuffer_.retrieveAllAsString().c_str());
+             inputBuffer_.toString().c_str());
     if (n > 0)
     {
+        LOG_INFO("进入handlRead后将要进入messageCallback_.%s",inputBuffer_.toString().c_str());
         // 调用用户设置的消息回调
         messageCallback_(shared_from_this(), &inputBuffer_, receiveTime);
     }
@@ -463,6 +464,7 @@ void TcpConnection::sendFileInLoop(int fileDescriptor, off_t offset, size_t coun
     // 未发送完且无错误 -> 注册写事件
     if (!faultError && remaining > 0)
     {
+        LOG_INFO("TcpConnection::sendFileInLoop remaining > 0.\n");
 
         fileQueue_.push({fileDescriptor, offset, remaining});
 

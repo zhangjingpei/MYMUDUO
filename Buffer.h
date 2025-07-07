@@ -49,6 +49,12 @@ public:
         return result;
     }
 
+    std::string toString()
+    {
+        std::string result(peek(),readableBytes());
+        return result;
+    }
+
     // 根据len判断剩余空间是否还够写，不够写则扩容
     void ensureWritableBytes(size_t len)
     {

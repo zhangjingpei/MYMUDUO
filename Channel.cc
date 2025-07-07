@@ -11,10 +11,14 @@ const int Channel::kNoneEvent = 0;
 const int Channel::kReadEvent = POLLIN | POLLPRI;
 const int Channel::kWriteEvent = POLLOUT;
 
-Channel::Channel(EventLoop *loop, int fd)
-    : loop_(loop), fd_(fd), events_(0), revents_(0), index_(-1), tied_(false)
-{
-}
+Channel::Channel(EventLoop* loop, int fd)
+: loop_(loop)
+, fd_(fd)
+, events_(0)
+, revents_(0)
+, index_(-1)
+, tied_(false)
+{}
 
 Channel::~Channel()
 {
@@ -24,7 +28,7 @@ Channel::~Channel()
     // }
 }
 // channel的tie方法什么时候调用  // 一个TcpConnection被创建的时候
-void Channel::tie(const std::shared_ptr<void> &obj)
+void Channel::tie(const std::shared_ptr<void>& obj)
 {
     tie_ = obj;
     tied_ = true;
@@ -71,31 +75,43 @@ void Channel::handleEvent(Timestamp receiveTime)
 // 根据poller通知的Channel发生的具体事件，然后Channel调用相应的回调操作
 void Channel::handleEventWithGuard(Timestamp receiveTime)
 {
-    LOG_INFO("=====\nChannel handleEvent revents:%d\n========\n", revents_);
+    LOG_INFO("Channel handleEventWithGuard and revents:%d\n========\n", revents_);
     // 关闭
     if ((revents_ & EPOLLHUP) && !(revents_ & EPOLLIN))
     {
         if (closeCallback_)
+        {
+            LOG_INFO("Channel closeCallback_ and revents:%d\n========\n", revents_);
             closeCallback_();
+        }
     }
 
     // 错误
     if (revents_ & EPOLLERR)
     {
         if (errorCallback_)
+        {
+            LOG_INFO("Channel errorCallback_ and revents:%d\n========\n", revents_);
             errorCallback_();
+        }
     }
 
     // 可写
     if (revents_ & EPOLLOUT)
     {
         if (writeCallback_)
+        {
+            LOG_INFO("Channel writeCallback_ and revents:%d\n========\n", revents_);
             writeCallback_();
+        }
     }
     // 可读
     if ((revents_ & EPOLLIN) || (revents_ & EPOLLPRI))
     {
         if (readCallback_)
+        {
+            LOG_INFO("Channel readCallback_ and revents:%d\n========\n", revents_);
             readCallback_(receiveTime);
+        }
     }
 }

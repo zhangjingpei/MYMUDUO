@@ -1,6 +1,6 @@
 #include "EventLoopThreadPool.h"
 #include "EventLoopThread.h"
-
+#include<cassert>
 
 EventLoopThreadPool::EventLoopThreadPool(EventLoop* baseLoop, const std::string& nameArg)
     : baseLoop_(baseLoop)
@@ -34,6 +34,7 @@ void EventLoopThreadPool::start(const ThreadInitCallback& cb)
 // 如果工作在多线程下，baseloop_(mainLoop)会默认以轮询的方式分配Channel给subLoop
 EventLoop* EventLoopThreadPool::getNextLoop()
 {
+    assert(started_);
     // 如果只设置一个县城，也就是只有一个mainReactor
     // 那么轮询只有一个线程 getNextLoop()返回baseLoop_;
     EventLoop* loop = baseLoop_;
@@ -52,7 +53,8 @@ EventLoop* EventLoopThreadPool::getNextLoop()
 // 获取所有的EventLoop
 std::vector<EventLoop*> EventLoopThreadPool::getAllLoops()
 {
-    if (!loops_.empty()) {
+    assert(started_);
+    if (loops_.empty()) {
         return std::vector<EventLoop*>(1, baseLoop_);
     }
     else

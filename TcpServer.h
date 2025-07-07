@@ -32,7 +32,7 @@ public:
         kReusePort,
     };
     TcpServer(EventLoop* loop, const InetAddress& listenAddr, const std::string& nameArg,
-              Option option = kNoReusePort);
+              Option option = kReusePort);
     ~TcpServer();
 
     void setThreadInitCallback(const ThreadInitCallback& cb)
